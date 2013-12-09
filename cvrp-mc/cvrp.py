@@ -34,6 +34,7 @@ Node coordinate type: %s
         else:
             def metric(a, b):
                 return 0
+        #Calculate distances between all nodes
         self.node_distances = [ [ metric(self.node_coord[i], self.node_coord[j])  for i in range(self.dimension) ] for j in range(self.dimension) ]
         return self
 

@@ -1,5 +1,5 @@
 from cvrp import ProblemInstance
-import sys
+import sys, json
 
 def readProblem(filename):
     f = open(filename)
@@ -46,12 +46,9 @@ def writeSolution(result,filename = None):
         if filename == None:
             f = sys.stdout
         else:
-            f = open(filename)
+            f = open("../" + filename, "w+")
         i = 1
+        lines = []
         for path in paths:
-            string = "Route #" + str(i) + ":"
-            for node in path:
-                string = string + " " + str(node)
-            f.write( string + "\n")
-            i += 1
-        f.write("cost " + str(cost) + "\n")
+            lines.append(path)
+        json.dump(lines, f)
